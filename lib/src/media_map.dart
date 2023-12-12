@@ -20,7 +20,7 @@ extension ImageInfoMapConversion on ImageInfo {
       "secure_url": secureUrl?.toString(),
       "type": type,
       "width": width,
-      "height": height, 
+      "height": height,
       "alt": alt
     }..removeWhere((key, value) => value == null));
   }

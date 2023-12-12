@@ -13,14 +13,14 @@ Future<void> main(List<String> args) async {
 
   CommandRunner<void> runner = CommandRunner("oghref_cmd",
       "Command line tools for retriving rich information link in URL")
-      ..addCommand(OgHrefGetInfoCommand())
-      ..addCommand(OgHrefGetMediaCommand())
-      ..addCommand(GetVersionCommand());
+    ..addCommand(OgHrefGetInfoCommand())
+    ..addCommand(OgHrefGetMediaCommand())
+    ..addCommand(GetVersionCommand());
 
   await runner.run(args).onError((error, stackTrace) {
     print(error);
     runner.printUsage();
-    
+
     exit(1);
   });
 

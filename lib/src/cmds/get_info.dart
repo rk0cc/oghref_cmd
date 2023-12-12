@@ -24,11 +24,12 @@ base class OgHrefGetInfoCommand extends AbstractOgHrefGetterCommand {
           "description": metaInfo.description,
           "url": metaInfo.url?.toString()
         }..removeWhere((key, value) => value == null),
-        theme: AnsiTreeViewTheme.$default().copyWith(headerTheme: AnsiTreeHeaderTheme(
-          customHeader: "$protocolName context"
-        )));
+        theme: AnsiTreeViewTheme.$default().copyWith(
+            headerTheme:
+                AnsiTreeHeaderTheme(customHeader: "$protocolName context")));
 
-    if ([metaInfo.images, metaInfo.audios, metaInfo.videos].any((element) => element.isNotEmpty)) {
+    if ([metaInfo.images, metaInfo.audios, metaInfo.videos]
+        .any((element) => element.isNotEmpty)) {
       print("Media summary:");
       print(dolumnify([
         ["Category", "Counts"],
