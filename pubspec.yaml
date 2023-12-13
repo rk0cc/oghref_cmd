@@ -18,3 +18,5 @@ platforms:
   linux:
   macos:
   windows:
+executables:
+  oghref_cmd:
