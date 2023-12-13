@@ -1,7 +1,6 @@
 name: oghref_cmd
-description: Command-line tools for reviewing decoded content of metadata
+description: Command-line tools for reviewing decoded content of metadata and JSON data export support
 version: 0.1.0
-publish_to: 'none'
 repository: https://github.com/rk0cc/oghref_cmd
 funding:
   - https://github.com/sponsors/rk0cc
