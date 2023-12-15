@@ -14,9 +14,6 @@ base class OgHrefGetInfoCommand extends AbstractOgHrefGetterCommand {
   @override
   void onFetchOnce(MetaInfo metaInfo, String protocolName) {
     print("Data found using $protocolName:");
-
-    print(metaInfo.url);
-
     AnsiX.printTreeView(
         {
           "site_name": metaInfo.siteName,
