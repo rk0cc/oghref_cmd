@@ -1,0 +1,97 @@
+name: Compile release
+on:
+  push:
+    branches:
+      - release
+  workflow_dispatch: 
+jobs:
+  build_win:
+    name: Build executable (Windows)
+    strategy:
+      matrix:
+        arch:
+          - x64
+          - arm64
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: release
+      - name: Install Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+          architecture: ${{ matrix.arch }}
+      - name: Get dependencies
+        run: dart pub get
+      - name: Create distribution folder
+        run: mkdir dist
+      - name: Compile
+        run: dart compile exe bin/oghref_cmd.dart -o dist/oghref_cmd.exe
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows (${{ matrix.arch }})
+          path: dist/oghref_cmd.exe
+          if-no-files-found: error
+  build_macos:
+    name: Build executable (macOS)
+    strategy:
+      matrix:
+        arch:
+          - x64
+          - arm64
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: release
+      - name: Install Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+          architecture: ${{ matrix.arch }}
+      - name: Get dependencies
+        run: dart pub get
+      - name: Create distribution folder
+        run: mkdir dist
+      - name: Compile
+        run: dart compile exe bin/oghref_cmd.dart -o dist/oghref_cmd
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: macOS (${{ matrix.arch }})
+          path: dist/oghref_cmd
+          if-no-files-found: error
+  build_linux:
+    name: Build executable (Linux)
+    strategy:
+      matrix:
+        arch:
+          - x64
+          - arm64
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: release
+      - name: Install Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+          architecture: ${{ matrix.arch }}
+      - name: Get dependencies
+        run: dart pub get
+      - name: Create distribution folder
+        run: mkdir dist
+      - name: Compile
+        run: dart compile exe bin/oghref_cmd.dart -o dist/oghref_cmd
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux (${{ matrix.arch }})
+          path: dist/oghref_cmd
+          if-no-files-found: error
