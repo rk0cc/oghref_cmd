@@ -18,7 +18,7 @@ dart pub global activate oghref_cmd
 
 ### Edit `pubspec.yaml`
 
-Plewse add `oghref_cmd` into `dev_dependencies`, **NOT `dependencies`**
+Please add `oghref_cmd` into `dev_dependencies`, **NOT `dependencies`**
 
 ```yaml
 dev_dependencies:
