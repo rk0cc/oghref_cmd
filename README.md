@@ -16,6 +16,15 @@ If Dart has been installed, it can be deployed by running this command:
 dart pub global activate oghref_cmd
 ```
 
+### Edit `pubspec.yaml`
+
+Plewse add `oghref_cmd` into `dev_dependencies`, **NOT `dependencies`**
+
+```yaml
+dev_dependencies:
+  oghref_cmd: # Copy version constraints from pub.dev
+```
+
 ## Usages
 
 ```console
