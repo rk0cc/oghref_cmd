@@ -3,3 +3,4 @@ pubspec.lock
 /bin/*
 !/bin/**/*.dart
 dist/
+.vscode/
