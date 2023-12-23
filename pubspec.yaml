@@ -8,7 +8,7 @@ environment:
   sdk: ^3.2.0
 dependencies:
   args: ^2.4.2
-  oghref_model: 2.1.2
+  oghref_model: ^2.1.2
   dolumns: ^2.0.1
   ansix: ^0.3.1
   meta: ^1.11.0
