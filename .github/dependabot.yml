@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - directory: /
+    package-ecosystem: github-actions
+    schedule:
+      time: "15:00"
+      timezone: Asia/Hong_Kong
+      interval: monthly
+  - directory: /
+    package-ecosystem: pub
+    open-pull-requests-limit: 0
+    schedule:
+      time: "15:00"
+      timezone: Asia/Hong_Kong
+      interval: monthly
