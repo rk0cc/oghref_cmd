@@ -6,6 +6,9 @@ This package only serves as executable which offers as pub package and complied 
 
 ### Download executable files
 
+> [!WARNING]
+> It only provides under AMD64 CPU architecture only, for those who uses other Dart supported CPU architecture, please consider [compile yourself](#build).
+
 Please download latest version from [releases](https://github.com/rk0cc/oghref_cmd/releases)
 
 ### Using `dart pub` command
@@ -25,9 +28,22 @@ dev_dependencies:
   oghref_cmd: # Copy version constraints from pub.dev
 ```
 
+### Build
+
+Please get Dart SDK first and execute this commands below:
+
+```bash
+# Assume Dart binaries is defined into PATH
+
+git clone --depth 1 --branch release https://github.com/rk0cc/oghref_cmd.git
+mkdir dist
+dart pub get
+dart compile exe bin/oghref_cmd.dart -o dist/oghref_cmd
+```
+
 ## Usages
 
-```console
+```plain
 Usage: oghref_cmd <command> [arguments]
 
 Global options:
