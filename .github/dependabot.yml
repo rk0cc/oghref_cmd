@@ -2,6 +2,7 @@ version: 2
 updates:
   - directory: /
     package-ecosystem: github-actions
+    target-branch: main
     schedule:
       time: "15:00"
       timezone: Asia/Hong_Kong
@@ -9,6 +10,7 @@ updates:
   - directory: /
     package-ecosystem: pub
     open-pull-requests-limit: 0
+    target-branch: main
     schedule:
       time: "15:00"
       timezone: Asia/Hong_Kong
