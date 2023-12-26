@@ -18,3 +18,5 @@ workflows:
         script: mkdir dist
       - name: Compile
         script: dart compile exe bin/oghref_cmd.dart -o dist/oghref_cmd
+    artifacts:
+      - dist/**
