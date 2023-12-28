@@ -7,7 +7,7 @@ This package only serves as executable which offers as pub package and complied 
 ### Download executable files
 
 > [!WARNING]
-> It only provides under AMD64 CPU architecture and Apple silicon only, for those who uses other Dart supported CPU architecture, please consider [compile yourself](#build).
+> It only provides under AMD64 CPU architecture and Apple Silicon (since `0.1.1`) only, for those who uses other Dart supported CPU architecture, please consider [compile yourself](#build).
 
 > [!NOTE]
 > macOS running in ARM64 (Apple silicon) version is compiled via Codemagic.
