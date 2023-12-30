@@ -9,6 +9,7 @@ final class GetVersionCommand extends Command<void> {
 
   @override
   void run() {
-    print("0.1.0");
+    // TODO: PLEASE UPDATE VERSION AND COMMIT BEFORE TAG
+    print("0.1.2");
   }
 }
