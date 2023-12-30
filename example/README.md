@@ -82,7 +82,7 @@ oghref_cmd json --indent=4 https://flutter.dev
 
 #### MetaInfo
 
-> [!INFO]
+> [!IMPORTANT]
 > All type are nullable
 
 |Name|Type|Description|
@@ -97,7 +97,7 @@ oghref_cmd json --indent=4 https://flutter.dev
 
 #### ImageInfo
 
-> [!INFO]
+> [!IMPORTANT]
 > All type are nullable, but all nulled values in ImageInfo is forbidden.
 
 |Name|Type|Description|
@@ -111,7 +111,7 @@ oghref_cmd json --indent=4 https://flutter.dev
 
 #### VideoInfo
 
-> [!INFO]
+> [!IMPORTANT]
 > All type are nullable, but all nulled values in VideoInfo is forbidden.
 
 |Name|Type|Description|
@@ -124,7 +124,7 @@ oghref_cmd json --indent=4 https://flutter.dev
 
 #### AudioInfo
 
-> [!INFO]
+> [!IMPORTANT]
 > All type are nullable, but all nulled values in AudeoInfo is forbidden.
 
 |Name|Type|Description|
