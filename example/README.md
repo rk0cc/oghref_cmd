@@ -125,7 +125,7 @@ oghref_cmd json --indent=4 https://flutter.dev
 #### AudioInfo
 
 > [!IMPORTANT]
-> All type are nullable, but all nulled values in AudeoInfo is forbidden.
+> All type are nullable, but all nulled values in AudioInfo is forbidden.
 
 |Name|Type|Description|
 |:---:|:---:|:---|
