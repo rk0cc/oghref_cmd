@@ -65,6 +65,8 @@ For each command's usages, please type:
 oghref_cmd <command name> -h
 ```
 
+or visit [readme page in example](example/README.md).
+
 ## License
 
 AGPL v3
