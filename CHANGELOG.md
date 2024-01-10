@@ -1,3 +1,8 @@
+## 1.0.0
+
+* Update model structure.
+* Using `stdout` and `stderr` from `dart:io` to print outputs rather than `print()`.
+
 ## 0.1.1
 
 * Fix decode error when original content display correctly.

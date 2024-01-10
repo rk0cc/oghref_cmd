@@ -1,3 +1,5 @@
+import 'dart:io' show stdout, stderr;
+
 import 'package:ansix/ansix.dart';
 import 'package:oghref_model/model.dart';
 
@@ -18,9 +20,9 @@ base class OgHrefGetMediaCommand extends AbstractOgHrefGetterCommand {
         hasAudio = metaInfo.audios.isNotEmpty;
 
     if (!hasImage && !hasVideo && !hasAudio) {
-      print("No media metadata declared");
+      stderr.writeln("No media metadata declared");
     } else {
-      print("Media found in $protocolName:");
+      stdout.writeln("Media found in $protocolName:");
 
       if (hasImage) {
         AnsiX.printTreeView(metaInfo.images.map((e) => e.toMap()).toList(),

@@ -8,7 +8,7 @@ import 'package:oghref_cmd/src/cmds/json_export.dart';
 import 'package:oghref_model/model.dart';
 
 Future<void> main(List<String> args) async {
-  MetaFetch()
+  MetaFetch.instance
     ..register(const OpenGraphPropertyParser())
     ..register(const TwitterCardPropertyParser());
 
@@ -20,7 +20,7 @@ Future<void> main(List<String> args) async {
     ..addCommand(GetVersionCommand());
 
   await runner.run(args).onError((error, stackTrace) {
-    print(error);
+    stderr.writeln(error);
     runner.printUsage();
 
     exit(1);

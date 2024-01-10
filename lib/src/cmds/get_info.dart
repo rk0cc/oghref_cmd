@@ -1,3 +1,5 @@
+import 'dart:io' show stdout;
+
 import 'package:ansix/ansix.dart';
 import 'package:dolumns/dolumns.dart';
 import 'package:oghref_model/model.dart';
@@ -13,7 +15,7 @@ base class OgHrefGetInfoCommand extends AbstractOgHrefGetterCommand {
 
   @override
   void onFetchOnce(MetaInfo metaInfo, String protocolName) {
-    print("Data found using $protocolName:");
+    stdout.writeln("Data found using $protocolName:");
     AnsiX.printTreeView(
         {
           "site_name": metaInfo.siteName,
@@ -27,15 +29,13 @@ base class OgHrefGetInfoCommand extends AbstractOgHrefGetterCommand {
 
     if ([metaInfo.images, metaInfo.audios, metaInfo.videos]
         .any((element) => element.isNotEmpty)) {
-      print("Media summary:");
-      print(dolumnify([
+      stdout.writeln("Media summary:");
+      stdout.writeln(dolumnify([
         ["Category", "Counts"],
         if (metaInfo.images.isNotEmpty) ["Images:", metaInfo.images.length],
         if (metaInfo.videos.isNotEmpty) ["Videos:", metaInfo.videos.length],
         if (metaInfo.audios.isNotEmpty) ["Audios:", metaInfo.audios.length]
       ]));
     }
-
-    print("");
   }
 }

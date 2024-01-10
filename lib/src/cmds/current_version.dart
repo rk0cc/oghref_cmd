@@ -1,3 +1,5 @@
+import 'dart:io' show stdout;
+
 import 'package:args/command_runner.dart';
 
 final class GetVersionCommand extends Command<void> {
@@ -10,6 +12,6 @@ final class GetVersionCommand extends Command<void> {
   @override
   void run() {
     // TODO: PLEASE UPDATE VERSION AND COMMIT BEFORE TAG
-    print("0.1.2");
+    stdout.write("1.0.0");
   }
 }

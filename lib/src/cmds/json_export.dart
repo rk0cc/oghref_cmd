@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io' show stdout;
 
 import 'package:oghref_model/model.dart';
 
@@ -65,7 +66,7 @@ base class JsonExportCommand extends AbstractOgHrefGetterCommand {
       jsonEncoder = const JsonEncoder();
     }
 
-    print(jsonEncoder.convert(json));
+    stdout.writeln(jsonEncoder.convert(json));
   }
 
   @override

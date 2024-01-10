@@ -1,20 +1,23 @@
 import 'dart:async';
+import 'dart:io' show stdout, stderr;
 
 import 'package:args/command_runner.dart';
 import 'package:meta/meta.dart';
 import 'package:oghref_model/model.dart';
 
 abstract base class AbstractOgHrefGetterCommand extends Command<void> {
+  static const Map<String, String> _protocolsDescs = {
+    "og": "Fetch Open Graph metadata context",
+    "twitter": "Fetch Twitter card metadata context"
+  };
+
   AbstractOgHrefGetterCommand() {
     argParser
       ..addOption("protocol",
           abbr: 'p',
           help: "Specify one protocol prefix uses for fetching data",
-          allowed: ["og", "twitter"],
-          allowedHelp: {
-            "og": "Fetch Open Graph metadata context",
-            "twitter": "Fetch Twitter card metadata context"
-          },
+          allowed: _protocolsDescs.keys,
+          allowedHelp: _protocolsDescs,
           valueHelp: "PREFIX")
       ..addSeparator("The first arguments must be an URL of website.");
   }
@@ -23,7 +26,6 @@ abstract base class AbstractOgHrefGetterCommand extends Command<void> {
   void onFetchAll(Map<String, MetaInfo> metaInfos) {
     for (MapEntry<String, MetaInfo> metaEntry in metaInfos.entries) {
       onFetchOnce(metaEntry.value, metaEntry.key);
-      print("\n");
     }
   }
 
@@ -35,18 +37,32 @@ abstract base class AbstractOgHrefGetterCommand extends Command<void> {
   FutureOr<void> run() async {
     Uri url = Uri.parse(argResults!.rest[0]);
 
-    Map<String, MetaInfo> metas = await MetaFetch().fetchAllFromHttp(url);
+    stdout.write("Fetching data...");
 
-    if (metas.isNotEmpty) {
-      String? specifiedProtocol = argResults!["protocol"];
+    try {
+      await MetaFetch.instance.fetchAllFromHttp(url).then((metas) {
+        stdout
+          ..writeCharCode(13)
+          ..write(List.filled(40, " ").join())
+          ..writeCharCode(13);
 
-      if (specifiedProtocol != null) {
-        onFetchOnce(metas[specifiedProtocol]!, specifiedProtocol);
-      } else {
-        onFetchAll(metas);
-      }
-    } else {
-      print("No metadata found in this URL");
+        if (metas.isNotEmpty) {
+          String? specifiedProtocol = argResults!["protocol"];
+
+          if (specifiedProtocol != null) {
+            onFetchOnce(metas[specifiedProtocol]!, specifiedProtocol);
+          } else {
+            onFetchAll(metas);
+          }
+        } else {
+          stderr
+            ..writeln()
+            ..writeln("No metadata found in this URL");
+        }
+      });
+    } catch (err) {
+      stdout.writeln();
+      rethrow;
     }
   }
 }
