@@ -11,6 +11,10 @@ abstract base class AbstractOgHrefGetterCommand extends Command<void> {
     "twitter": "Fetch Twitter card metadata context"
   };
 
+  static final MetaFetch _cmdFetchInstance = MetaFetch()
+    ..register(const OpenGraphPropertyParser())
+    ..register(const TwitterCardPropertyParser());
+
   AbstractOgHrefGetterCommand() {
     argParser
       ..addOption("protocol",
@@ -40,7 +44,7 @@ abstract base class AbstractOgHrefGetterCommand extends Command<void> {
     stdout.write("Fetching data...");
 
     try {
-      await MetaFetch.instance.fetchAllFromHttp(url).then((metas) {
+      await _cmdFetchInstance.fetchAllFromHttp(url).then((metas) {
         stdout
           ..writeCharCode(13)
           ..write(List.filled(40, " ").join())
